@@ -1,8 +1,8 @@
 "use client";
 
 import * as z from "zod";
-import { cn } from "@/lib/utils";
 import axios from "axios";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { Heading } from "@/components/heading";
 import { Download, ImageIcon } from "lucide-react";
@@ -16,7 +16,7 @@ import { useState } from "react";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
 import { Card, CardFooter } from "@/components/ui/card";
-import Image from "next/image";
+import { useProModal } from "@/hooks/use_pro_modal";
 import {
   Select,
   SelectContent,
@@ -27,6 +27,7 @@ import {
 
 const ImagePage = () => {
   const router = useRouter();
+  const proModal = useProModal();
 
   const [images, setImages] = useState<string[]>([]);
 
@@ -53,7 +54,9 @@ const ImagePage = () => {
 
       form.reset();
     } catch (error: any) {
-      console.log(error);
+      if (error?.response?.status === 429) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }
