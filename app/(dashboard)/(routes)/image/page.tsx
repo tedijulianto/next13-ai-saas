@@ -3,6 +3,7 @@
 import * as z from "zod";
 import axios from "axios";
 import Image from "next/image";
+import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { Heading } from "@/components/heading";
 import { Download, ImageIcon } from "lucide-react";
@@ -56,6 +57,8 @@ const ImagePage = () => {
     } catch (error: any) {
       if (error?.response?.status === 429) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
       }
     } finally {
       router.refresh();

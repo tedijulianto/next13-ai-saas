@@ -13,8 +13,9 @@ import { MessageSquare, ImageIcon, VideoIcon, Music, Code, Check, Zap } from "lu
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const tools = [
   {
@@ -62,7 +63,7 @@ export const ProModal = () => {
 
       window.location.href = (await response).data.url;
     } catch (error) {
-      console.log(error, "STRIPE_CLIENT_ERROR");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -93,7 +94,13 @@ export const ProModal = () => {
           ))}
         </DialogHeader>
         <DialogFooter>
-          <Button onClick={onSubscribe} size="lg" variant="premium" className="w-full">
+          <Button
+            disabled={loading}
+            onClick={onSubscribe}
+            size="lg"
+            variant="premium"
+            className="w-full"
+          >
             Upgrade
             <Zap className="w-4 h-4 fill-white ml-2" />
           </Button>

@@ -2,6 +2,7 @@
 
 import * as z from "zod";
 import axios from "axios";
+import toast from "react-hot-toast";
 import ReactMarkdown from "react-markdown";
 import { useForm } from "react-hook-form";
 import { Heading } from "@/components/heading";
@@ -54,6 +55,8 @@ const CodePage = () => {
     } catch (error: any) {
       if (error?.response?.status === 429) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
       }
     } finally {
       router.refresh();
