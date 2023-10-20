@@ -15,7 +15,7 @@ import {
 import { usePathname } from "next/navigation";
 import { FreeCounter } from "@/components/free_counter";
 
-const mont = Montserrat({
+const montserrat = Montserrat({
   weight: "600",
   subsets: ["latin"],
 });
@@ -66,9 +66,10 @@ const routes = [
 
 interface SidebarProps {
   apiLimitCount: number;
+  isPro: boolean;
 }
 
-const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {
+const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
   const pathname = usePathname();
 
   return (
@@ -83,7 +84,7 @@ const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
-          <h1 className={cn("text-2xl font-bold", mont.className)}>Genius</h1>
+          <h1 className={cn("text-2xl font-bold", montserrat.className)}>Genius</h1>
         </Link>
         <div className="space-y-1">
           {routes.map((route) => (
@@ -103,7 +104,7 @@ const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {
           ))}
         </div>
       </div>
-      <FreeCounter apiLimitCount={apiLimitCount} />
+      <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} />
     </div>
   );
 };
