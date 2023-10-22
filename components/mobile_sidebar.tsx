@@ -10,7 +10,7 @@ interface MobileSidebarProps {
   isPro: boolean;
 }
 
-const MobileSidebar = ({ apiLimitCount, isPro = false }: MobileSidebarProps) => {
+const MobileSidebar = ({ apiLimitCount = 0, isPro = false }: MobileSidebarProps) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -24,9 +24,9 @@ const MobileSidebar = ({ apiLimitCount, isPro = false }: MobileSidebarProps) => 
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu className="md:hidden" />
-        {/* <Button variant="ghost" size="icon" className="md:hidden">
-        </Button> */}
+        <div className="md:hidden hover:bg-zinc-100 rounded-full p-1">
+          <Menu />
+        </div>
       </SheetTrigger>
       <SheetContent side="left" className="p-0">
         <Sidebar isPro={isPro} apiLimitCount={apiLimitCount} />

@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       messages,
     });
 
-    if (isPro) {
+    if (!isPro) {
       await increaseApilimit();
     }
 

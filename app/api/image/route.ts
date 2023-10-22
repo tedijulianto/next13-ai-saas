@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       size: resolution,
     });
 
-    if (isPro) {
+    if (!isPro) {
       await increaseApilimit();
     }
 
