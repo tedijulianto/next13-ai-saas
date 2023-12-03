@@ -3,23 +3,23 @@
 import * as z from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import { Heading } from "@/components/heading";
-import { MessageSquare } from "lucide-react";
-import { formSchema } from "./constants";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { ChatCompletionMessage } from "openai/resources/index.mjs";
-import { Empty } from "@/components/empty";
-import { Loader } from "@/components/loader";
 import { cn } from "@/lib/utils";
-import { UserAvatar } from "@/components/user_avatar";
+import { useState } from "react";
+import { formSchema } from "./constants";
+import { useForm } from "react-hook-form";
+import { Empty } from "@/components/empty";
+import { useRouter } from "next/navigation";
+import { Loader } from "@/components/loader";
+import { MessageSquare } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Heading } from "@/components/heading";
+import { Button } from "@/components/ui/button";
 import { BotAvatar } from "@/components/bot_avatar";
 import { useProModal } from "@/hooks/use_pro_modal";
+import { UserAvatar } from "@/components/user_avatar";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ChatCompletionMessage } from "openai/resources/index.mjs";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -85,6 +85,7 @@ const ConversationPage = () => {
                     <FormControl className="m-0 p-0">
                       <Input
                         {...field}
+                        autoComplete="off"
                         disabled={isLoading}
                         placeholder="How do I calculate the radius of a circle?"
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"

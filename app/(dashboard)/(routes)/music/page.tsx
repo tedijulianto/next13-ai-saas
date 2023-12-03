@@ -3,19 +3,19 @@
 import * as z from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import { Heading } from "@/components/heading";
+import { useState } from "react";
 import { Music } from "lucide-react";
 import { formSchema } from "./constants";
+import { useForm } from "react-hook-form";
+import { Empty } from "@/components/empty";
+import { useRouter } from "next/navigation";
+import { Loader } from "@/components/loader";
+import { Input } from "@/components/ui/input";
+import { Heading } from "@/components/heading";
+import { Button } from "@/components/ui/button";
+import { useProModal } from "@/hooks/use_pro_modal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Empty } from "@/components/empty";
-import { Loader } from "@/components/loader";
-import { useProModal } from "@/hooks/use_pro_modal";
 
 const MusicPage = () => {
   const router = useRouter();
@@ -75,6 +75,7 @@ const MusicPage = () => {
                     <FormControl className="m-0 p-0">
                       <Input
                         {...field}
+                        autoComplete="off"
                         disabled={isLoading}
                         placeholder="Piano solo"
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"

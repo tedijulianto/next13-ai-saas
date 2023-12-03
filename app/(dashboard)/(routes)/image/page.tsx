@@ -4,20 +4,20 @@ import * as z from "zod";
 import axios from "axios";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import { Heading } from "@/components/heading";
-import { Download, ImageIcon } from "lucide-react";
-import { amountOptions, formSchema, resolutionOptions } from "./constants";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Empty } from "@/components/empty";
+import { useRouter } from "next/navigation";
 import { Loader } from "@/components/loader";
-import { Card, CardFooter } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Heading } from "@/components/heading";
+import { Button } from "@/components/ui/button";
+import { Download, ImageIcon } from "lucide-react";
 import { useProModal } from "@/hooks/use_pro_modal";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Card, CardFooter } from "@/components/ui/card";
+import { amountOptions, formSchema, resolutionOptions } from "./constants";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import {
   Select,
   SelectContent,
@@ -88,6 +88,7 @@ const ImagePage = () => {
                     <FormControl className="m-0 p-0">
                       <Input
                         {...field}
+                        autoComplete="off"
                         disabled={isLoading}
                         placeholder="A picture of a cute cat"
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"

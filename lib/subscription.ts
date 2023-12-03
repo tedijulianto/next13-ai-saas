@@ -1,5 +1,5 @@
-import { auth } from "@clerk/nextjs";
 import prismadb from "./prismadb";
+import { auth } from "@clerk/nextjs";
 
 const DAY_IN_MS = 86_400_000;
 

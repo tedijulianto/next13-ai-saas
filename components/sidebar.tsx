@@ -1,8 +1,11 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Montserrat } from "next/font/google";
+import { usePathname } from "next/navigation";
+import { FreeCounter } from "@/components/free_counter";
 import {
   LayoutDashboard,
   MessageSquare,
@@ -12,8 +15,6 @@ import {
   Code,
   Settings,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { FreeCounter } from "@/components/free_counter";
 
 const montserrat = Montserrat({
   weight: "600",
